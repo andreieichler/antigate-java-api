@@ -22,13 +22,13 @@ antigate-java-api
 Добавить зависимость в проект
 
 ```xml
-    <dependencies>
-        <dependency>
-            <groupId>ru.fourqube.antigate</groupId>
-            <artifactId>antigate-java-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <dependency>
+        <groupId>ru.fourqube.antigate</groupId>
+        <artifactId>antigate-java-api</artifactId>
+        <version>1.0</version>
+    </dependency>
+</dependencies>
 ```
 
 Пример использования
