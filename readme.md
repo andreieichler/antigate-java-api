@@ -37,13 +37,16 @@ antigate-java-api
 AntigateClient client = AntigateClientBuilder.create()
                 .setKey("put-here-antigate-api-key")
                 .build();
+// Проверка баланса
 double balance = client.getBalance();
+// Загрузка капчи
 String id = client.upload(new URL("http://example.com/captcha.jpg"));
-или
-String id = client.upload("/path/to/captcha-file.jpg");
-или
-File file = new File("C:/captcha-file.jpg");
-String id = client.upload(file);
+// или
+// String id = client.upload("/path/to/captcha-file.jpg");
+// или
+// File file = new File("C:/captcha-file.jpg");
+// String id = client.upload(file);
+// Проверка статуса
 CaptchaStatus cs = client.checkStatus(id);
 if (cs.isReady()) {
     String text = cs.getText();
@@ -52,4 +55,4 @@ if (cs.isReady()) {
 }
 ```
 
-Дополнительные настройки можно задавать через java properties (см. ru.fourqube.antigate.AntigateSettings).
+Дополнительные настройки можно задавать через java properties (см. ```ru.fourqube.antigate.AntigateSettings```).
