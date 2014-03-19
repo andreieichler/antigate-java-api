@@ -5,7 +5,7 @@ antigate-java-api
 
 Добавление к Maven проекту
 --------------------------
-1. Добавление репозитория в pom.xml
+Добавление репозитория в pom.xml
 ```xml
 <repositories>
     <repository>
@@ -18,7 +18,7 @@ antigate-java-api
     </repository>
 </repositories>
 ```
-2. Добавить зависимость в проект
+Добавить зависимость в проект
 
 ```xml
     <dependencies>
