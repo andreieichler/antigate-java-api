@@ -25,6 +25,9 @@ public class GetStatusCommand extends AbstractCommand<CaptchaStatus> {
 
     public GetStatusCommand(String id, AntigateSettings settings) {
         super(settings);
+        if (id == null) {
+            throw new IllegalArgumentException("id cannot be null");
+        }
         this.id = id;
     }
 

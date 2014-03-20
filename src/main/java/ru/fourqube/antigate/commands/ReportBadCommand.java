@@ -24,6 +24,9 @@ public class ReportBadCommand extends AbstractCommand<Void> {
 
     public ReportBadCommand(String id, AntigateSettings settings) {
         super(settings);
+        if (id == null) {
+            throw new IllegalArgumentException("id cannot be null");
+        }
         this.id = id;
     }
 
