@@ -28,6 +28,12 @@ public interface AntigateClient {
      * @return идентификатор в antigate.com, по которому можно забрать результат
      */
     String upload(URL url);
+    
+    /**
+     * @param imageContent the array content of the image
+     * @return идентификатор в antigate.com, по которому можно забрать результат
+     */
+    String upload(byte[] imageContent);
 
     /**
      * Проверка статуса

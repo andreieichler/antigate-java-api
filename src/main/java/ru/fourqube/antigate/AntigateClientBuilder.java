@@ -26,11 +26,6 @@ public class AntigateClientBuilder {
         return this;
     }
 
-    public AntigateClientBuilder setMaxBid(float maxBid) {
-        settings.setProperty(AntigateSettings.MAX_BID, String.valueOf(maxBid));
-        return this;
-    }
-
     public AntigateClient build() {
         return new AntigateClientImpl(settings);
     }

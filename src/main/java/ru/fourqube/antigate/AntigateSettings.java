@@ -11,7 +11,6 @@ import java.util.Properties;
 public class AntigateSettings extends Properties {
     public static final String HOST = "antigate.host";
     public static final String KEY = "antigate.key";
-    public static final String MAX_BID = "antigate.maxBid";
     public static final String RUSSIAN = "antigate.russian";
     public static final String MAX_LENGTH = "antigate.maxLength";
     public static final String MIN_LENGTH = "antigate.minLength";
@@ -23,6 +22,12 @@ public class AntigateSettings extends Properties {
     public AntigateSettings() {
         // todo set default settings
         put(HOST, "antigate.com");
+        put(TWO_WORDS, "0");
+        put(NUMERIC, "0");
+        put(CALC, "0");
+        put(MIN_LENGTH, "0");
+        put(MAX_LENGTH, "0");
+        put(RUSSIAN, "0");
     }
 
     public AntigateSettings(Properties properties) {
@@ -35,10 +40,6 @@ public class AntigateSettings extends Properties {
 
     public String getKey() {
         return getProperty(KEY);
-    }
-
-    public String getMaxBid() {
-        return getProperty(MAX_BID);
     }
 
     public String isRussian() {

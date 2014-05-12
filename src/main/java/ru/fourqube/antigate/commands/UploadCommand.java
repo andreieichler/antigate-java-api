@@ -7,11 +7,14 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import ru.fourqube.antigate.AntigateSettings;
 import ru.fourqube.antigate.Consts;
 import ru.fourqube.antigate.exceptions.AntigateCode;
@@ -32,6 +35,7 @@ public class UploadCommand extends AbstractCommand<String> {
 
     private File file;
     private URL url;
+    private byte[] imageContent;
 
     public UploadCommand(File file, AntigateSettings settings) {
         super(settings);
@@ -47,6 +51,11 @@ public class UploadCommand extends AbstractCommand<String> {
         super(settings);
         this.url = url;
     }
+    
+    public UploadCommand(byte[] imageContent, AntigateSettings settings) {
+      super(settings);
+      this.imageContent = imageContent;
+  }
 
     @Override
     protected URIBuilder createUriBuilder() {
@@ -90,10 +99,14 @@ public class UploadCommand extends AbstractCommand<String> {
             addPartToEntity(entity, "calc", settings.isCalc());
             addPartToEntity(entity, "min_len", String.valueOf(settings.getMinLength()));
             addPartToEntity(entity, "max_len", String.valueOf(settings.getMaxLength()));
-            addPartToEntity(entity, "is_russian", settings.isRussian());
-            addPartToEntity(entity, "max_bid", String.valueOf(settings.getMaxBid()));
-            FileBody fileBody = new FileBody(getFile());
-            entity.addPart("file", fileBody);
+            addPartToEntity(entity, "is_russian", settings.isRussian());            
+            if (getFile() == null) {
+              ContentBody cd = new ByteArrayBody(imageContent, "file");
+              entity.addPart("file", cd);
+            } else {
+              FileBody fileBody = new FileBody(getFile());
+              entity.addPart("file", fileBody);
+            }            
             return entity;
         } catch (IOException e) {
             throw new AntigateException(e.getMessage(), e);

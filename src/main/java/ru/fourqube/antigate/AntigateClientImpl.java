@@ -37,6 +37,11 @@ class AntigateClientImpl implements AntigateClient {
     }
 
     @Override
+    public String upload(byte[] imageContent) {
+      return new UploadCommand(imageContent, settings).execute();
+    }
+
+    @Override
     public CaptchaStatus checkStatus(String id) {
         return new GetStatusCommand(id, settings).execute();
     }
