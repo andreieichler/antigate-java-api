@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <httpclient.version>4.3</httpclient.version>
+        <httpclient.version>4.5.10</httpclient.version>
         <slf4j.log4j12.version>1.7.5</slf4j.log4j12.version>
         <commons.lang3.version>3.1</commons.lang3.version>
         <commons.io.version>2.4</commons.io.version>
